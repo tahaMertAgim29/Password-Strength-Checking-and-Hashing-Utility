@@ -10,7 +10,7 @@ and the utility of hashes used.
 - Password Strength Checking
 - Configuring Hash Parameters
 - Hashing Utility
-- Categorizing the password depending on their risk levels `Weak`, `Moderate`,` Strong` or `Critical`
+- Categorizing the password depending on their risk levels `Weak`, `Moderate`,`Strong` or `Critical`
 
 ## Requirements
 
