@@ -24,4 +24,4 @@ HASHING_CONFIG = {
 }
 
 
-DICTIONARY_FILE = "dictionary.txt" # The text file of dictionary where compromised or weak passwords are involved in
+DICTIONARY_FILE = "dictionary.txt" # The text file of dictionary where compromised or weak passwords are involved in. You can add new password samples if you think it is critically weak
