@@ -23,5 +23,5 @@ HASHING_CONFIG = {
     "argon2_parallelism": 4,
 }
 
-
-DICTIONARY_FILE = "dictionary.txt" # The text file of dictionary where compromised or weak passwords are involved in. You can add new password samples if you think it is critically weak
+# The text file of dictionary where compromised or weak passwords are involved in. You can add new password samples if you think it is critically weak
+DICTIONARY_FILE = "dictionary.txt" 
