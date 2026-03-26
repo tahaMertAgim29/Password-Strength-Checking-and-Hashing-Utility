@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Mr.Shark's Secure Password Analyzer </title>
+    <style>
+      body { font-family: sans-serif; max-width: 800px; margin: 40px auto; line-height: 1.6; }
+        h1 { text-align: center; }
+        .form-container, .results-container, .policy-container {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .warning { color: red; font-weight: bold; }
+        .success { color: green; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; word-break: break-all; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1> SHARKY Comparative Password Security Analyzer </h1>
+    <div class="form-container">
+        <h2>Test Your Password</h2>
+        <form method="POST">
+            <label for="password">Enter Password:</label>
+            <input type="password" id="password" name="password" required style="width: 80%; padding: 8px;">
+            <button type="submit" style="padding: 8px 15px;">Analyze</button>
+        </form>
+    </div>
+
+    <div class="policy-container">
+        <h2>Current Security Policy and Hash Policies (Configurable)</h2>
+        <p>Analysis is currently based on these configurable rules from <code>config.py</code>:</p>
+        <ul>
+            <li>Min Length: {{ policy_config.min_length }}</li>
+            <li>Strong Entropy Threshold: {{ policy_config.strong_entropy_threshold }} bits</li>
+            <li>Moderate Entropy Threshold: {{ policy_config.moderate_entropy_threshold }} bits</li>
+            <li>BCrypt Cost Factor: {{ hashing_config.bcrypt_rounds }}</li>
+            <li>Argon2 Parameters: time_cost={{ hashing_config.argon2_time_cost }}, memory_cost={{ hashing_config.argon2_memory_cost }}, parallelism={{ hashing_config.argon2_parallelism }}</li>
+        </ul>
+    </div>
+
+    {% if results %}
+    <div class="results-container">
+        <h2>Analysis Results for: <span style="color: blue;">{{ results.password_input }}</span></h2>
+
+        <h3>Password Strength & Policy Compliance</h3>
+        <p><strong>Rating:</strong>
+            <span class="{{ 'success' if results.strength.rating == 'Strong' else 'warning' }}">
+                {{ results.strength.rating }}
+            </span>
+        </p>
+        <p><strong>Entropy Score (E):</strong> {{ results.strength.entropy }} bits</p>
+        <p><strong>Length (L):</strong> {{ results.strength.length }}</p>
+
+        {% if results.strength.warnings %}
+            <p><strong>Warnings/Violations:</strong></p>
+            <ul>
+                {% for warning in results.strength.warnings %}
+                    <li class="warning">{{ warning }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="success">No policy violations or known compromises detected.</p>
+        {% endif %}
+
+        <h3>Comparative Secure Hashing (KDFs)</h3>
+        <table>
+            <tr>
+                <th>Algorithm</th>
+                <th>Hash Output (Stored Data)</th>
+                <th>Hashing Time</th>
+                <th>Cost/Params</th>
+            </tr>
+            <tr>
+                <td><strong>BCrypt</strong></td>
+                <td>{{ results.hashing.bcrypt.hash }}</td>
+                <td>{{ results.hashing.bcrypt.time }} seconds</td>
+                <td>Rounds: {{ results.hashing.bcrypt.cost_factor }}</td>
+            </tr>
+            <tr>
+                <td><strong>Argon2</strong></td>
+                <td>{{ results.hashing.argon2.hash }}</td>
+                <td>{{ results.hashing.argon2.time }} seconds</td>
+                <td>Params: {{ results.hashing.argon2.params }}</td>
+            </tr>
+        </table>
+        <p style="font-size: 0.9em;">* Note: The slow hashing time is intentional and essential for defeating high-speed brute-force attacks.</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
