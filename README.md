@@ -27,6 +27,7 @@ This section is about which platforms or libraries have been used in this projec
 > The IDE used for Python is optional that you can also use another IDE to execute this project but when you take this project, you should be sure that
 > you downloaded the required libraries and they are properly working.
 
+
 ## Platforms and Libraries
 
 ![Python](https://img.shields.io/badge/Python-%233776AB?style=for-the-badge&logo=python&logoColor=fff) ![Flask](https://img.shields.io/badge/Flask-%233BABC3?style=for-the-badge&logo=flask&logoColor=fff)
