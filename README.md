@@ -31,7 +31,7 @@ This section is about which platforms or libraries have been used in this projec
 ## Platforms and Libraries
 
 ![Python](https://img.shields.io/badge/Python-%233776AB?style=for-the-badge&logo=python&logoColor=fff) ![Flask](https://img.shields.io/badge/Flask-%233BABC3?style=for-the-badge&logo=flask&logoColor=fff)
-![PyCharm](https://img.shields.io/badge/Pycharm-%23000000?style=for-the-badge&logo=pycharm&logoColor=fff) ![HTML5](https://img.shields.io/badge/HTML-%23E34F26?style=for-the-badge&logo=html5&logoColor=fff)
+![PyCharm](https://img.shields.io/badge/Pycharm-%23000000?style=for-the-badge&logo=pycharm&logoColor=fff) ![HTML](https://img.shields.io/badge/HTML5-%23E34F26?style=for-the-badge&logo=html5&logoColor=fff)
 
 
 
